@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+/* grid display AT 771px */
+
+/* at min-width 768px the side-bar 256px */
+/* the same 220px at min-width  544px */

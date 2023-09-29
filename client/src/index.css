@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -66,4 +66,43 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+
+[data-theme='dark']{
+/* 
+  dark theme colors */
+  --text-color:#E6EDF3;
+  --nav-icon-color:#7D8590;
+  --header-bg:#0d1117;
+  --rest-of-page-color-bg:#2b3137;
+  --blue-text-color:#2F81F7;
+  --btn-color-bg:#21262d;
+--bt-text-color:#c9d1d9;
+--border-color:#7d8590;
+--green-text:#3fb950;
 }
+
+:root{
+  --text-color:#1f2328;
+  --nav-icon-color:#656d76;
+  --header-bg:#f6f8fa;
+  --rest-of-page-color-bg:#2b3137;
+  --blue-text-color:#2F81F7;
+  --btn-color-bg:#21262d;
+--bt-text-color:#c9d1d9;
+--border-color:#7d8590;
+--green-text:#3fb950;
+--sign-up-bg:#0c162d;
+--sign-up-prompt-text:#00cfc8;
+--sign-up-intro-text:#8193b2;
+--sign-up-form-border:#202637;
+}
+
+
+
+
+
+
+
+
