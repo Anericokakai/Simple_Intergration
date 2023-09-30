@@ -1,10 +1,33 @@
-import Create_Account from "../pages/Create_Account";
+import ApiKey_page from "../pages/ChildElements/ApiKey_page";
+import Documentation from "../pages/ChildElements/Documentation";
+import OverviewPage from "../pages/ChildElements/OverviewPage";
+import LoginPage from "../pages/LoginPage";
 
- const user_routes=[
- {   element:<Create_Account></Create_Account>,
+import Home_page from "../pages/Home_page";
 
- path:"/create_account"
-}
-]
 
-export default user_routes
+const user_routes = [
+  {
+    element: <Home_page/>,
+    path: "/home",
+    children:[
+        {
+            path:"/home/overview",
+            element:<OverviewPage/>
+        },{
+            path:"/home/api_key",
+            element:<ApiKey_page/>
+        },{
+            path:"/home/docs",
+            element:<Documentation/>
+        }
+    ]
+  },
+
+  {
+    path:"/home/con_access",
+    element:<LoginPage/>
+  }
+];
+
+export default user_routes;

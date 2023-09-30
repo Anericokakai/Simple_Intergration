@@ -1,103 +1,624 @@
-/* :root {
+ :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  
+--color:#E6EDF3;
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --text-color:#E6EDF3;
+  --color: rgba(255, 255, 255, 0.87);
+  --nav-icon-color:#7D8590;
+  --header-bg:#010409;
+  --rest-of-page-color-bg:#0d1117;
+  --blue-text-color:#2F81F7;
+  --btn-color-bg2:#21262d;
+  --btn-color-bg:#1a1a1a
+--bt-text-color:#c9d1d9;
+--border-color:#7d8590;
+--green-text:#3fb950;
+--hover-btn:#646cff;
+--icon-btn:#7d8590;
+--btn-box-shadow:0px 4px 6px -1px rgba(0,0,0,0.1) , 0px 2px 4px -1px rgba(0,0,0,0.06);
+--form--bg:#30363d87;
+
+
+
 }
 
-a {
+[data-theme='light']{
+  /* 
+    light theme colors */
+    --text-color:#1f2328;
+    --nav-icon-color:#656d76;
+    --header-bg:#f6f8fa;
+    --rest-of-page-color-bg:#ffffff;
+    --blue-text-color:#2F81F7;
+    --btn-color-bg2:#f9f9f9;
+  --bt-text-color:#1f2328;
+  --border-color:#7d8590;
+  --green-text:#3fb950;
+  --sign-up-bg:#0c162d;
+  --sign-up-prompt-text:#00cfc8;
+  --sign-up-intro-text:#8193b2;
+  --sign-up-form-border:#202637;
+  --hover-link-color: #747bff;
+  --hover-btn:#646cff;
+  --icon-btn:#1f2328;
+  --form--bg:#ffff;
+  }
+  
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+   
+  }
+  body{
+    background-color: var(--rest-of-page-color-bg);
+  }
+.link_default {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
-a:hover {
+.link_default:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
 
-button {
+
+
+ .btn_default {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--btn-color-bg2);
+  color: var(--bt-text-color);
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+.btn_default:hover {
+  border-color: var(--hover-btn);
 }
-button:focus,
+.btn_default:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
 
 
-[data-theme='dark']{
+
+/* ############################################################ */
+/* START OF NAVIGATION BAR STYLES */
+.accountPage{
+  background-color: var(--rest-of-page-color-bg);
+  min-height: 100vh;
+  color: var(--text-color);
+  transition:all  ease .1s ;
+ 
+}
+.accountHeader{
+  background-color: var(--header-bg);
+  height: 150px;
+  border-bottom: 1px solid var(--border-color);
+ display: grid;
+ grid-template-rows: 1fr 1fr;
+
+
+}
+.upper_Header{
+  display: flex;
+  gap: 1em;
+  padding: 10px;
+  
+}
+
+.Icon_btn{
+  width: 45px;
+  height: 45px;
+  background-color: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid var(--icon-btn);
+  transition: border-color .5s;
+}
+.Icon_btn:hover{
+  border-color: var(--hover-btn);
+}
+.upperEnd{
+  
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 1em;
+}
+.upperStart{
+  width: 30%;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+#iconFade{
+  color: var(--icon-btn);
+  font-size: 30px;
+}
+.dash_btn{
+  width: 80%;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 24px;
+  height: 100%;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  box-shadow: var(--btn-box-shadow) ;
+}
+.dash_btn:hover{
+  background-color: var(--btn-color-bg2);
+  cursor: pointer;
+  border-color: var(--hover-btn);
+  
+}
+.dash_btn:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+.lowerHeader{
+
+  display: flex;
+  gap: 1em;
+  padding:  4px 1em;
+  align-items:last baseline;
+  
+  
+  
+}
+.dash_btn_lowerHeader{
+  padding: .5em 2em;
+  height: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: border-color .25s;
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+  transition: border-color 0.25s;
+}
+.dash_btn_lowerHeader:hover{
+  box-shadow:var(--btn-box-shadow);
+  border-color: var(--hover-btn);
+  background-color: var(--btn-color-bg2);
+  
+}
+
+
+.active{
+  text-decoration: none;
+}
+.active button{
+  color: var(--hover-btn);
+  border-bottom: 2px solid var(--hover-btn);
+}
+.notActive{
+  text-decoration: none;
+}
+
+
+/* !SMALL SCREEN FOR THE HEADER NAVIGATION */
+@media screen and (max-width:800px) {
+  .upperEnd{
+    width: 60%;
+  }
+  .upperStart{
+    width: 40%;
+  }
+  .lowerHeader{
+    gap: .5em;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow-x: scroll;
+    min-width: 300px;
+  }
+  .lowerHeader::-webkit-scrollbar{
+    
+    height: 2px;
+    background-color: var(--border-color);
+  }
+  .dash_btn_lowerHeader{
+    padding: 10px 10px;
+  }
+}
+
+
+@media (max-width:540px) {
+ .upperEnd{
+  width: 30%;
+
+ }
+ .upperStart{
+  width: 70%;
+ }
+  
+ #iconFade{
+  font-size: 20px;
+ }
+ .Icon_btn{
+  width: 40px;
+  height: 40px;
+ }
+ .upper_Header{
+  padding: 5px;
+ }
+}
+@media screen and (min-width:1000px) {
+  .dash_btn{
+    font-size: 27px;
+  }
+  .dash_btn_lowerHeader{
+    font-size: 23px;
+  }
+  
+  
+}
+
+
+/* END OF NAVIGATION PAGE */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ############################################################ */
+/* ! ********************************************************************************** */
+/* ! START OF OVER VIEW PAGE STYLES  */
+
+.OverViewPage{
+  padding: 1rem 2em;
+}
+
+.OverView_grid_Container{
+
+  min-height: 80vh;
+  display: grid;
+  grid-gap: 16px;
+  
+  grid-template-columns: 1fr 2fr;
+}
+.UserInfo{
+
+  display: grid;
+  justify-content: center;
+  padding: 2em 0;
+}
+
+.userImage{
+  width: 256px;
+  height: 256px;
+}
+.userImage img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  object-fit: cover;
+}
+
+.user_name {
+  font-size: 2em;
+  line-height: 1.1;
+  padding-top: 1em;
+}
+.MoreBoutUser{
+  text-align: center;
+}
+.fadeText{
+  color: var(--border-color);
+}
+
+.Profile_actions{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.profileBtn{
+  background-color: var(--btn-color-bg2);
+  padding: .7em 1em;
+  font-weight: 700;
+  color: var(--bt-text-color);
+  border-radius: 7px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--btn-box-shadow);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+
+@media screen and (max-width:771px) {
+  
+  .OverView_grid_Container{
+    grid-template-columns: 1fr;
+  }
+  .detailed_info{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+  .userImage{
+    width: 90px;
+    height: 90px;
+  }
+  .UserInfo{
+    display: flex;
+    flex-direction: column;
+    padding: 1em 2em;
+    gap: 2em;
+  }
+ 
+}
+
+.availableApis{
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  min-height: 150px;
+  padding: .5em 1em;
+}
+.UserDetails{
+  padding: 1em;
+}
+.availableApi_upper{
+  display: flex;
+  justify-content: space-between;
+}
+.permitted{
+  padding: 3px 1em;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-color);
+  border-radius: 10px;
+}
+.blueText{
+  color: var(--blue-text-color);
+}
+.AvailableApi_container{
+  display: grid;
+  gap: 1em;
+}
+
+.text{
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+.textHeading{
+  font-size: 1.2em;
+}
+.head_text{
+  padding: 0 0 1em 1em;
+}
+
+
+
+@media screen  and (min-width:771px) and (max-width:1115px) {
+
+  .OverView_grid_Container{
+    grid-template-columns: 1.5fr 2fr;
+  }
+  
+}
+@media  screen and (max-width:450px) {
+  .userImage{
+    width: 60px;
+    height: 60px;
+  }
+  .user_name,.fadeText{
+    font-size: 19px;
+  }
+  .OverViewPage{
+    padding: 1em ;
+  }
+  .blueText{
+    font-size: 1em;
+  }
+  .text{
+    font-size: 1em;
+  }
+  .UserDetails{
+    padding: 1em 0 ;
+  }
+}
+
+@media screen and (min-width:1300px) {
+  .AvailableApi_container{
+   
+    grid-template-columns: 1fr 1fr;
+  }
+  
+}
+
+/* ! END OF OVERVIEW PAGE   STYLES  */
+/* ############################################################ */
+/* ! ********************************************************************************** */
+
+
+
+
+
+
+
+
+
+
+/* ! START OF LOGIN PAGE   STYLES  */
+/* ############################################################ */
+/* ! ********************************************************************************** */
+
+.Login_container{
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--rest-of-page-color-bg);
+  width: 100%;
+}
+.LoginForm_container{
+ width: 600px;
+ min-height: 80vh;
+ text-align: center;
+ 
+ padding: 2em 1em;
+
+}
+.LoginText{
+  font-size: 2em;
+
+}
+.signedInWith_Container{
+  border: 0.1em solid var(--border-color);
+  display: grid;
+  gap: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: transparent;
+  
+}
+#git_icons{
+  font-size: 60px;
+  cursor: pointer;
+}
+.Form{
+padding: 2em 0;
+}
+.Form form{
+  border: 1px solid var(--border-color);
+  background-color: var(--form--bg);
+  border-radius: 10px;
+  padding: 1em 2em;
+
+}
+.inputs{
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+.inputs input{
+  padding: 10px 8px;
+  border-radius: 10px;
+  border: 0.01em solid var(--border-color);
+  background-color: var(--rest-of-page-color-bg);
+  color: var(--text-color);
+  font-size: 22px;
+
+}
+.inputs input:focus{
+  outline: none;
+}
+.btn_submit{
+  padding: 8px ;
+  font-size: 22px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background-color: var(--green-text);
+  color: var(--color);
+  cursor: pointer;
+}
+label{
+  font-size: 22px;
+}
+.prompts{
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tipsDesc{
+  color: var(--border-color);
+}
 /* 
-  dark theme colors */
-  --text-color:#E6EDF3;
-  --nav-icon-color:#7D8590;
-  --header-bg:#0d1117;
-  --rest-of-page-color-bg:#2b3137;
-  --blue-text-color:#2F81F7;
-  --btn-color-bg:#21262d;
---bt-text-color:#c9d1d9;
---border-color:#7d8590;
---green-text:#3fb950;
-}
+ #b1bac4;
+    --color-scale-gray-3: #8b949e;
+    --color-scale-gray-4: #6e7681;
+    --color-scale-gray-5: #484f58;
+    --color-scale-gray-6: #30363d;
+    --color-scale-gray-7: #21262d;
+    --color-scale-gray-8: #161b22;
+    --color-scale-gray-9: #0d1117; */
 
-:root{
-  --text-color:#1f2328;
-  --nav-icon-color:#656d76;
-  --header-bg:#f6f8fa;
-  --rest-of-page-color-bg:#2b3137;
-  --blue-text-color:#2F81F7;
-  --btn-color-bg:#21262d;
---bt-text-color:#c9d1d9;
---border-color:#7d8590;
---green-text:#3fb950;
---sign-up-bg:#0c162d;
---sign-up-prompt-text:#00cfc8;
---sign-up-intro-text:#8193b2;
---sign-up-form-border:#202637;
-}
+
+
+/* ! END OF LOGIN PAGE   STYLES  */
+/* ############################################################ */
+/* ! ********************************************************************************** */
+
+
+
+
+
+
+
+
+
+
+/* ############################################################ */
+/* ! ********************************************************************************** */
+
+
+/* ! START OF API_KEY PAGE STYLES  */
+
+/* ! END OF API_KEY  PAGE   STYLES  */
+/* ############################################################ */
+/* ! ********************************************************************************** */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ############################################################ */
+/* ! ********************************************************************************** */
+
+
+/* ! START OF DOCUMENTATION PAGE STYLES  */
+
+/* ! END OF DOCUMENTATION  PAGE   STYLES  */
+/* ############################################################ */
+/* ! ********************************************************************************** */
+
+
+
+
 
 
 
