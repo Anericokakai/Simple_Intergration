@@ -5,6 +5,7 @@ import dotenv from "dotenv"
 export default defineConfig({
   plugins: [react()],
   define:{
-    'process.env.VITE_CLIENT_ID':JSON.stringify(process.env.VITE_CLIENT_ID)
+    'process.env.VITE_CLIENT_ID':JSON.stringify(process.env.VITE_CLIENT_ID),
+    'process.env.VITE_ACCESS_TOKEN':JSON.stringify(process.env.VITE_ACCESS_TOKEN)
   }
 })

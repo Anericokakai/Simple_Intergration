@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactMarkdown from "react-markdown"
 import "github-markdown-css"
-import {prism as SyntaxHighlighter} from "react-syntax-highlighter"
+import {Prism as SyntaxHighlighter} from "react-syntax-highlighter"
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'; 
+import { fetchReadme } from '../../helpers/FetchReadme';
+import { useState } from 'react';
 function Documentation() {
+const[documentationData,setdocumentationData]=useState()
+  useEffect(()=>{
 
+    const token=import.meta.env.VITE_ACCESS_TOKEN
+    fetchReadme(token).then(data=>{
+      console.log(data.data)
+      const decodedData= atob(data.data.content)
+      setdocumentationData(decodedData)
+    })
+  },[])
+  console.log(documentationData)
     const markedContent=`
 # React mark down
 ## help me improve
@@ -25,7 +38,24 @@ Currently, two official plugins are available:
 
   return (
     <article className='markdown-body'  >
-        <ReactMarkdown>{markedContent}</ReactMarkdown>
+    <ReactMarkdown
+        components={{
+          code: ({ node, inline, className, children, ...props }) => {
+            const match = /language-(\w+)/.exec(className || '');
+            return !inline && match ? (
+              <SyntaxHighlighter language={match[1]} style={atomDark} {...props}>
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            );
+          },
+        }}
+      >
+        {documentationData}
+      </ReactMarkdown>
 
 
   </article>
