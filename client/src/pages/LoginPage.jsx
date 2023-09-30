@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../index.css";
 function LoginPage() {
   return (
-    <div className="Login_container" data-theme={"light"}>
+    <div className="Login_container" data-theme={"dark"}>
       <div className="LoginForm_container">
         <h3 className="LoginText">Confirm access</h3>
 
