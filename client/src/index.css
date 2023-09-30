@@ -525,6 +525,7 @@ padding: 2em 0;
   display: flex;
   flex-direction: column;
   margin-top: 1em;
+  position: relative;
 }
 .inputs input{
   padding: 10px 8px;
@@ -533,7 +534,15 @@ padding: 2em 0;
   background-color: var(--rest-of-page-color-bg);
   color: var(--text-color);
   font-size: 22px;
+  
 
+}
+#showPass{
+
+  position: absolute;
+  top: 60%;
+  right: 1em;
+  cursor: pointer;
 }
 .inputs input:focus{
   outline: none;
@@ -557,6 +566,25 @@ label{
 }
 .tipsDesc{
   color: var(--border-color);
+}
+
+.errorMessage{
+  color: red;
+  font-size: 17px;
+}
+@media screen and (max-width:601px) {
+  .LoginForm_container{
+    width: 100%;
+  }
+  .Form form{
+    padding: 1em;
+  }
+  .inputs input{
+    font-size: 19px;
+  }
+  label{
+    font-size: 20px;
+  }
 }
 /* 
  #b1bac4;
@@ -636,7 +664,7 @@ label{
   line-height: 1.5em;
   display: grid;
 
-  padding: 1em ;
+  padding: 3em 1em ;
   max-width: 1000px;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }

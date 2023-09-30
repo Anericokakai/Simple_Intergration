@@ -11,6 +11,7 @@ function LoginPage() {
           <h4> login with github</h4>
           <i className="fa-brands fa-github" id="git_icons"></i>
         </div>
+        <h2>Or</h2>
         <div className="Form">
           <form action="">
             <div className="inputs">

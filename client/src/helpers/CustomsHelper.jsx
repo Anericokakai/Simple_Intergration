@@ -8,3 +8,14 @@ export const ActiveLink = (props) => {
     ></NavLink>
   );
 };
+
+
+
+// !show or hide passwords
+export const showPassword = (input) => {
+  if (input.type === "password") {
+    return (input.type = "text");
+  } else {
+    input.type = "password";
+  }
+};

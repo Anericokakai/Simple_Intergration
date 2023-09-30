@@ -4,6 +4,7 @@ import OverviewPage from "../pages/ChildElements/OverviewPage";
 import LoginPage from "../pages/LoginPage";
 
 import Home_page from "../pages/Home_page";
+import CreateAccount from "../pages/Create_Account";
 
 
 const user_routes = [
@@ -25,8 +26,11 @@ const user_routes = [
   },
 
   {
-    path:"/home/con_access",
+    path:"/con_access",
     element:<LoginPage/>
+  },{
+    path:'/create_acc',
+    element:<CreateAccount/>
   }
 ];
 
