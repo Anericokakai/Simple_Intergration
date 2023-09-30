@@ -4,7 +4,7 @@
 
 ## HOW DOES SIMPLE INTEGRATION WORKS ?
 
-1. Create an account with simple integration ,[here is the link]('http://localhost:5173/home/con_access')
+1. Create an account with simple integration ,[here is the link]("http://localhost:5173/home/con_access")
 
 2. Generate an api key at the dashBoard
 ![image]("https://ibb.co/Dwcrm3v")

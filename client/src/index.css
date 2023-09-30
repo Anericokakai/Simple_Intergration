@@ -626,9 +626,18 @@ label{
 
 
 
+.documentContainer{
+  display: grid;
+  place-content: center;
+}
 
 .markdown-body{
   font-size: 20px;
+  line-height: 1.5em;
+  display: grid;
+
+  padding: 1em ;
+  max-width: 1000px;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 .markdown-body h1::before,
