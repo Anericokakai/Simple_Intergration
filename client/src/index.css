@@ -513,6 +513,12 @@ button:focus-visible {
 #git_icons{
   font-size: 60px;
   cursor: pointer;
+  will-change: filter;
+  transition: filter 300ms;
+}
+#git_icons:hover {
+  background-color: var(--rest-of-page-color-bg);
+  filter: drop-shadow(0 0 2em green);
 }
 .Form{
 padding: 2em 0;
@@ -599,6 +605,9 @@ label{
   font-size: 19px;
   cursor: pointer;
 }
+.loadingGit{
+  pointer-events: none;
+}
 
 .invalidDetails{
   background-color: var(--warning-bg);
@@ -654,6 +663,167 @@ label{
 
 
 /* ! START OF API_KEY PAGE STYLES  */
+
+.ApiKeyPage{
+
+  padding: 3em 2em;
+  display: grid;
+  place-content: center;
+  width: 100vw;
+}
+
+.introToApiKey{
+  border-bottom: 1px solid var(--border-color);
+  padding: 2em 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.introToApiKey h1{
+  font-size: 2em;
+}
+.genNewBtn{
+  padding: 0 15px ;
+  max-height: 50px;
+  font-size: 17px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--color);
+  background-color: var(--green-text);
+  cursor: pointer;
+}
+.sectionContainerForApiKey{
+max-width: 100vw;
+}
+.ApiDesc{
+  padding: 2em 0;
+}
+.ApiDesc p{
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+.api_heading{
+  font-size: 1.6em;
+  padding-bottom: 1em;
+}
+#key{
+  font-size: 3em;
+  color: var(--green-text);
+}
+.apiKey{
+  border: 0.01px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  min-height: 170px;
+  border-radius: 10px;
+  align-items: center;
+}
+.apiInfo{
+  display: flex;
+gap: 1em;
+  align-items: center;
+  height: 100%;
+  min-height: 150px;
+  
+
+}
+
+.fa-copy{
+  padding-left: 1em;
+}
+.delbtn{
+  padding: .6em 1.7em;
+  border-radius: 10px;
+  border: 1px solid var(--redWarning);
+  background-color: var(--warning-bg);
+  color: var(--color);
+  font-size: 17px;
+  cursor: pointer;
+}
+.detailedApiInfo{
+  height: 100%;
+  display: block;
+  
+  
+}
+.detailedApiInfo h2{
+
+  padding-bottom: 1em;
+}
+.detailedApiInfo p{
+  padding-top: 1em;
+}
+/* 
+-color-calendar-halloween-graph-day-L1-bg: #ffee4a;
+    --color-calendar-halloween-graph-day-L2-bg: #ffc501;
+    --color-calendar-halloween-graph-day-L3-bg: #fe9600; */
+.api_dec{
+
+  padding: 15px;
+  border: 0.01px solid  #ffee4a;
+  background-color: #ffed4a25;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+
+}
+.copied{
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: -10px;
+  right: -6em;
+  padding: 1em;
+  border: 0.01px solid var(--border-color);
+  border-radius: 50vw;
+  background-color: var(--green-text);
+  color: var(--color);
+  transition: all .2s;
+display: none;
+}
+.showCopied{
+  display: block;
+}
+.loading3{
+  width: 40px;
+  margin: 0 1em;
+  
+}
+.nonClick{
+  pointer-events: none;
+}
+
+@media screen and (max-width:540px) {
+  .detailedApiInfo h2{
+    font-size: 17px;
+  }
+  .apiKey{
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+  }
+  .apiInfo{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .api_dec{
+    font-size: 13px;
+  }
+  .noApi{
+    font-size: 17px;
+  }
+  #key{
+    font-size: 27px;
+  }
+  .ApiKeyPage{
+    padding-left:10px ;
+    padding-right: 10px;
+  }
+
+
+}
 
 /* ! END OF API_KEY  PAGE   STYLES  */
 /* ############################################################ */

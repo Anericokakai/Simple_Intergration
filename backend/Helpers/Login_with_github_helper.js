@@ -7,6 +7,14 @@ dotenv.config();
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
 export const Login_with_gitHub_helper = async (req, res) => {
+ try {
+  
+
+  if(!req.query.code){
+    return res.status(401).json({
+      ErrorMessage:"invalid login credentials !! please try again"
+    })
+  }
   const urlParams = `?client_id=${clientId}&client_secret=${clientSecret}&code=${req.query.code}`;
   await axios
     .post(`https://github.com/login/oauth/access_token${urlParams}`, {
@@ -22,6 +30,7 @@ export const Login_with_gitHub_helper = async (req, res) => {
       for (const single of resultsArray) {
         const [key, value] = single.split("=");
         if (key === "access_token") {
+          
           res.status(200).json({ token: value });
         }
       }
@@ -29,6 +38,10 @@ export const Login_with_gitHub_helper = async (req, res) => {
     .catch((err) => {
       res.status(401).json({ error: err.message });
     });
+  
+ } catch (error) {
+  return res.status(500).json({errorMessage:"internal server error ,please try again",error:error})
+ }
 
   // ! get user data from
 };
@@ -36,12 +49,13 @@ export const Login_with_gitHub_helper = async (req, res) => {
 // ! get user data function
 export const Get_user_data_helper = async (req, res) => {
   try {
-    const header = req.get("Authorization");
+    const token =req.headers.authorization
+
 
     await axios
       .get(`https://api.github.com/user`, {
         headers: {
-          Authorization: header,
+          Authorization:token ,
         },
       })
       .then(async (data) => {
@@ -64,7 +78,8 @@ export const Get_user_data_helper = async (req, res) => {
 
         res.status(200).json({
           token: token,
-          git_id: id,
+          userInfo: user_exist,
+          validUser:true
         });
       })
       .catch((err) => {
@@ -73,8 +88,9 @@ export const Get_user_data_helper = async (req, res) => {
           .json({
             errorMessage: "Bad credentials please try again",
             error: err.message,
+            errorDetail:err
           });
-        console.log(err);
+        
       });
   } catch (error) {
     res

@@ -2,7 +2,7 @@ import ApiKey_page from "../pages/ChildElements/ApiKey_page";
 import Documentation from "../pages/ChildElements/Documentation";
 import OverviewPage from "../pages/ChildElements/OverviewPage";
 import LoginPage from "../pages/LoginPage";
-
+ import { RequireAuth } from "../helpers/ProtectRoutes";
 import Home_page from "../pages/Home_page";
 import CreateAccount from "../pages/Create_Account";
 
@@ -14,10 +14,10 @@ const user_routes = [
     children:[
         {
             path:"/home/overview",
-            element:<OverviewPage/>
+            element:<RequireAuth> <OverviewPage/></RequireAuth>
         },{
             path:"/home/api_key",
-            element:<ApiKey_page/>
+            element:<RequireAuth><ApiKey_page/></RequireAuth>
         },{
             path:"/home/docs",
             element:<Documentation/>

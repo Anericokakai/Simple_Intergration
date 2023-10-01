@@ -1,7 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../../index.css";
 function OverviewPage() {
+
+  const {user_information,LogInStatus,token}= useSelector(store=>store.userLogInDetails)
+  console.log(user_information)
   return (
     <section className="OverViewPage">
       <div className="OverView_grid_Container">
@@ -9,14 +13,14 @@ function OverviewPage() {
           <div className="detailed_info">
             <div className="userImage">
               <img
-                src="https://avatars.githubusercontent.com/u/119412102?v=4"
+                src={user_information?.avatar_url}
                 className="userImage"
-                alt=""
+                alt="Upload an avator"
               />
             </div>
             <div className="MoreBoutUser">
-              <h1 className="user_name">Anerico kakai</h1>
-              <h2 className="fadeText">AnericoKakai</h2>
+              <h1 className="user_name">{user_information?.name}</h1>
+              <h2 className="fadeText">{user_information?.email}</h2>
             </div>
           </div>
           <div className="Profile_actions">

@@ -23,7 +23,7 @@ try {
 
         if(updateApiKey){
             return res.status(201).json({
-                apiKey:apiKey,
+                info:updateApiKey,
                 message:"api key generated successfully"
             })
         }
