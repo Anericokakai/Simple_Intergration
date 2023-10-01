@@ -1,0 +1,22 @@
+ 
+ import storage from "redux-persist/lib/storage"
+ import{ persistReducer} from 'redux-persist'
+ import {configureStore} from '@reduxjs/toolkit'
+ import thunk from "redux-thunk";
+import userInfoSlice from "../slice/userInfoSlice";
+const persistConfig={
+    key:"root",
+    storage
+}
+
+// persisted reducer
+ const persistedReducerForUser=persistReducer(persistConfig,userInfoSlice)
+
+ export const store=configureStore({
+reducer:{
+    userLogInDetails:persistedReducerForUser
+},
+
+    middleware:[thunk],
+
+ })

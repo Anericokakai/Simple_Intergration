@@ -27,6 +27,7 @@
 --form--bg:#30363d87;
 --redWarning:#F85149;
 --warning-bg:#f8524932;
+--green:green;
 
 
 
@@ -529,6 +530,14 @@ padding: 2em 0;
   margin-top: 1em;
   position: relative;
 }
+
+.inputs .checked,
+.inputs .strongPass,
+.inputs .matchInPass{
+  border: 0.01em solid var(--green);
+}
+
+
 .inputs input{
   padding: 10px 8px;
   border-radius: 10px;
@@ -548,6 +557,10 @@ padding: 2em 0;
 }
 .inputs input:focus{
   outline: none;
+}
+
+.checked:focus{
+  outline: 1px solid;
 }
 .btn_submit{
   padding: 8px ;
@@ -577,12 +590,23 @@ label{
   color: red;
   font-size: 17px;
 }
+#hideError{
+  position: absolute;
+  right: .5em;
+  top: 50%;
+  color: var(--redWarning);
+  transform: translate(-50%,-50%);
+  font-size: 19px;
+  cursor: pointer;
+}
 
 .invalidDetails{
   background-color: var(--warning-bg);
   border: 0.01px solid var(--redWarning);
   padding: 1em 0;
   border-radius: 10px;
+  position: relative;
+  padding-right: 1.5em;
   
 }
 

@@ -7,6 +7,7 @@ import { User_Login_Route } from "./Routes/LoginRoute.js";
 import { Api_key_route } from "./Routes/Api_keyRoute.js";
 import { Login_With_github } from "./Routes/LoginWithGithub.js";
 import { get_user_data_route } from "./Routes/Get_gitHub_userData_route.js";
+import { create_accountRoute } from "./Routes/CreateAccount.js";
 
 // !CONFIGURE ALL THE FILES
 const app= express();
@@ -36,3 +37,4 @@ app.use(Api_key_route)
 app.use(Login_With_github)
 app.use(get_user_data_route)
 
+app.use(create_accountRoute)

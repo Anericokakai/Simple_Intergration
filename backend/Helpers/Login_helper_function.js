@@ -42,7 +42,7 @@ const is_password_valid=await bcryptjs.compare(password,password_from_db,(err,re
 // send the token to the user and the status
 const response={
     token:token,
-    userId:user_exist?._id
+    user:user_exist
 }
 
 
