@@ -1,10 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { showPassword } from "../helpers/CustomsHelper";
+import { LoginFunction } from "../helpers/LoginsHelper";
 import "../index.css";
+import loadingImage from "../assets/load2.gif";
 function LoginPage() {
+  const [show, setShowPassword] = useState(false);
+  const [formMessage, setFormMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [backEndMessage, setBackendMessage] = useState();
+  // !SHOW OR HIDE PASSWORDS
+  const showOrHide = () => {
+    const inputType_password = document.querySelector("#password");
+    if (show === false) {
+      setShowPassword(true);
+    } else {
+      setShowPassword(false);
+    }
+
+    inputType_password && showPassword(inputType_password);
+  };
+
+  // ! HANDLE FORM SUBMISSIONS
+  const handleLoginForm = (e) => {
+    const form = document.querySelector("form");
+    const form_Data = new FormData(form);
+    e.preventDefault();
+
+    const email = form_Data.get("email");
+    const password = form_Data.get("password");
+    if(!email||!password)return setFormMessage("All input fields are required !")
+
+    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+      return setFormMessage("invalid email address");
+    } else {
+      setFormMessage("");
+    }
+    const body = {
+      email: email,
+      password: password,
+    };
+    setLoading(true);
+    LoginFunction(body)
+      .then((data) => {
+        console.log(data.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err.response.data.errorMessage);
+        if (err.response.status === 401) {
+          setBackendMessage(err.response.data.errorMessage);
+        }
+      });
+  };
+
   return (
     <div className="Login_container" data-theme={"dark"}>
       <div className="LoginForm_container">
+        {loading && (
+          <div className="loader">
+            <img src={loadingImage} alt="" />
+          </div>
+        )}
         <h3 className="LoginText">Confirm access</h3>
 
         <div className="signedInWith_Container">
@@ -12,11 +70,17 @@ function LoginPage() {
           <i className="fa-brands fa-github" id="git_icons"></i>
         </div>
         <h2>Or</h2>
+        {formMessage && <div className="invalidDetails"> <p>{formMessage}</p> </div>}
+  {
+    backEndMessage &&      <div className="invalidDetails">
+    <p>{backEndMessage}</p>
+  </div>
+  }
         <div className="Form">
-          <form action="">
+          <form action="" onSubmit={handleLoginForm}>
             <div className="inputs">
               <label htmlFor="email"> Email</label>
-              <input type="email" id="email" name="email" autoComplete="on" />
+              <input type="text" id="email" name="email" autoComplete="on" />
             </div>
             <div className="inputs">
               <label htmlFor="email"> Password</label>
@@ -26,6 +90,19 @@ function LoginPage() {
                 name="password"
                 autoComplete="off"
               />
+              {show ? (
+                <i
+                  className="fa-regular fa-eye-slash"
+                  id="showPass"
+                  onClick={showOrHide}
+                ></i>
+              ) : (
+                <i
+                  className="fa-regular fa-eye"
+                  id="showPass"
+                  onClick={showOrHide}
+                ></i>
+              )}
             </div>
             <div className="inputs">
               <button className="btn_submit">submit</button>
@@ -39,7 +116,10 @@ function LoginPage() {
           </Link>
 
           <div className="tipsDesc">
-          <span className="blueText prompts">Tip: </span> You are about to sign up to simpleIntegration. After you've have logged in, you'll only be asked to re-authenticate again after a few hours of inactivity.
+            <span className="blueText prompts">Tip: </span> You are about to
+            sign up to simpleIntegration. After you've have logged in, you'll
+            only be asked to re-authenticate again after a few hours of
+            inactivity.
           </div>
         </div>
       </div>

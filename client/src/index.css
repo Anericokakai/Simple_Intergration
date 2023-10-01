@@ -20,11 +20,13 @@
   --btn-color-bg:#1a1a1a
 --bt-text-color:#c9d1d9;
 --border-color:#7d8590;
---green-text:#3fb950;
+--green-text:#238636;
 --hover-btn:#646cff;
 --icon-btn:#7d8590;
 --btn-box-shadow:0px 4px 6px -1px rgba(0,0,0,0.1) , 0px 2px 4px -1px rgba(0,0,0,0.06);
 --form--bg:#30363d87;
+--redWarning:#F85149;
+--warning-bg:#f8524932;
 
 
 
@@ -556,6 +558,9 @@ padding: 2em 0;
   color: var(--color);
   cursor: pointer;
 }
+.loader img{
+  width: 200px;
+}
 label{
   font-size: 22px;
 }
@@ -572,6 +577,15 @@ label{
   color: red;
   font-size: 17px;
 }
+
+.invalidDetails{
+  background-color: var(--warning-bg);
+  border: 0.01px solid var(--redWarning);
+  padding: 1em 0;
+  border-radius: 10px;
+  
+}
+
 @media screen and (max-width:601px) {
   .LoginForm_container{
     width: 100%;

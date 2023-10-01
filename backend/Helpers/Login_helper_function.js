@@ -21,7 +21,7 @@ export const Login_helper_function=async(req,res)=>{
 // validate the password
 const is_password_valid=await bcryptjs.compare(password,password_from_db,(err,result)=>{
     if(err){
-        return res.status(401).json({errorMessage:"invalid login credentials"})
+        return res.status(400).json({errorMessage:"invalid login credentials"})
     }
 })
 
