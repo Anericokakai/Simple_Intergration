@@ -15,7 +15,7 @@ function OverviewPage() {
               <img
                 src={user_information?.avatar_url}
                 className="userImage"
-                alt="Upload an avator"
+                alt="Upload an avatar"
               />
             </div>
             <div className="MoreBoutUser">

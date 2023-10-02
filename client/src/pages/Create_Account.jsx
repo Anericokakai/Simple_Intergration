@@ -14,6 +14,7 @@ function CreateAccount() {
   const [checkStrongPassword, setCheckStrongPassword] = useState();
   const [userPassword, setUserPassword] = useState();
   const [checkMatchInPassword, setCheckMatchInPassword] = useState();
+  const[loadingGit,setLoadingGit]=useState(false)
 const[loading,setLoading]=useState(false)
   // ! VALID EMAIL ADDRESS
   function checkEmailOnChange(e) {
@@ -145,6 +146,15 @@ const[loading,setLoading]=useState(false)
     showPassword(inputCon);
   };
 
+  // !login with git
+  function loginWithGithub() {
+    setLoadingGit(true)
+    window.location.assign(
+      "https://github.com/login/oauth/authorize?client_id=" +
+        import.meta.env.VITE_CLIENT_ID
+    );
+  }
+
   return (
     <div className="Login_container" data-theme={"dark"}>
       <div className="LoginForm_container">
@@ -155,7 +165,7 @@ const[loading,setLoading]=useState(false)
         )}
         <h3 className="LoginText">Create an account</h3>
 
-        <div className="signedInWith_Container">
+        <div className={`signedInWith_Container ${loadingGit ?"loadingGit":""}`} onClick={loginWithGithub}>
           <h4> login with github</h4>
           <i className="fa-brands fa-github" id="git_icons"></i>
         </div>

@@ -7,6 +7,7 @@ import Home_page from "../pages/Home_page";
 import CreateAccount from "../pages/Create_Account";
 
 
+
 const user_routes = [
   {
     element: <Home_page/>,
@@ -32,6 +33,7 @@ const user_routes = [
     path:'/create_acc',
     element:<CreateAccount/>
   }
+ 
 ];
 
 export default user_routes;
