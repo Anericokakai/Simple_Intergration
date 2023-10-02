@@ -30,3 +30,9 @@ export const getGitHubUserData=async(access_token)=>{
     return result
 
 }
+
+// reset password
+export const resetPassword=async(email)=>{
+  const response=await axios.post("http://localhost:6060/simpleIntegration/api/v1/forgot_pass",email)
+  return response
+}

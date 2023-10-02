@@ -5,6 +5,7 @@ import LoginPage from "../pages/LoginPage";
  import { RequireAuth } from "../helpers/ProtectRoutes";
 import Home_page from "../pages/Home_page";
 import CreateAccount from "../pages/Create_Account";
+import ResetPass from "../pages/ResetPass";
 
 
 
@@ -33,7 +34,10 @@ const user_routes = [
     path:'/create_acc',
     element:<CreateAccount/>
   }
- 
+ ,{
+  path:"/reset_pass",
+  element:<ResetPass></ResetPass>
+ }
 ];
 
 export default user_routes;

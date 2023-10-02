@@ -21,6 +21,6 @@ export const forgotPasswordHelper = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    return res.render("../views/message",{message:"your token has expired  try again to reset your password ",msg2:"follow this link to try again"})
+    return res.render("../views/message",{message:"your token has expired , try again to reset your password ",msg2:"follow this link to try again"})
   }
 };

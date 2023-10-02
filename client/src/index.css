@@ -1,3 +1,9 @@
+ *{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+ }
+ 
  :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -612,9 +618,10 @@ label{
 .invalidDetails{
   background-color: var(--warning-bg);
   border: 0.01px solid var(--redWarning);
-  padding: 1em 0;
+  padding: 1em ;
   border-radius: 10px;
   position: relative;
+
   padding-right: 1.5em;
   
 }
@@ -754,6 +761,7 @@ gap: 1em;
 }
 .detailedApiInfo p{
   padding-top: 1em;
+  
 }
 /* 
 -color-calendar-halloween-graph-day-L1-bg: #ffee4a;
@@ -887,4 +895,96 @@ display: none;
 }
 
 
+   .BodyLogin{
+  color: var(--color);
+  background-color:#0d1117;
+  width: 100%;
+  height: 100vh;
+  padding: 1em;
+ padding-bottom: 3em;
+ display: grid;
+ align-items: center;
+ 
 
+}
+.changePass{
+ 
+  max-height: 50vh;
+}
+
+.formBackend{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #7d8590;
+  min-width: 300px;
+  max-width: 600px;
+  padding: 4em 2em;
+  gap: 2em;
+  min-height: 50vh;
+border-radius: 10px;
+  
+}
+.backendInput{
+  display: grid;
+  text-align: center;
+}
+.backendInput input{
+  border-radius: 10px;
+  border: 1px solid #7D8590;
+  background-color: transparent;
+  height: 60px;
+  color: white;
+  padding: 1em;
+  font-size: 18px;
+  
+}
+.backendInput button{
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid #7D8590;
+  background-color: #238636;
+  color: white;
+  font-size: 23px;
+  cursor: pointer;
+  transition: all .25s;
+
+}
+.backendInput button:hover{
+  background-color: green;
+}
+.formBackend h1{
+  text-align: center;
+}
+
+@media screen  and (min-width:600px){
+
+  .formBackend{
+    min-width: 600px;
+  }
+  .BodyLogin{
+    justify-content: center;
+  }
+  
+}
+
+@media screen and (max-width:400px) {
+  .formBackend h1{
+    font-size: 24px;
+  }
+  .formBackend label{
+    font-size: 17px;
+  }
+  .formBackend{
+    min-width: 100%;
+    padding: 4em 1em;
+  }
+  .backendInput input{
+    height: 50px;
+    font-size: 16px;
+  }
+  .formBackend button{
+    height: 50px;
+    font-size: 20px;
+  }
+  
+}
