@@ -35,7 +35,7 @@ export const sendEmailsHelpers=async(req,res)=>{
   
         const link = `http://localhost:6060/reset-pass?id=${user_exist._id}&token=${token}`;
   
-        let testAccount = nodemailer.createTestAccount();
+
   
   
   

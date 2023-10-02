@@ -406,9 +406,9 @@ button:focus-visible {
 }
 .permitted{
   padding: 3px 1em;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--green);
   background-color: transparent;
-  color: var(--text-color);
+  color: var(--green-text);
   border-radius: 10px;
 }
 .blueText{

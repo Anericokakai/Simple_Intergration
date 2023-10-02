@@ -32,7 +32,7 @@ function Documentation() {
       <article className="markdown-body">
         {loading ? (
           <div>
-            {" "}
+         
             <h1>loading data</h1>
             <div className="loader">
               <img src={loadingImg} alt="" />

@@ -14,8 +14,8 @@ function CreateAccount() {
   const [checkStrongPassword, setCheckStrongPassword] = useState();
   const [userPassword, setUserPassword] = useState();
   const [checkMatchInPassword, setCheckMatchInPassword] = useState();
-  const[loadingGit,setLoadingGit]=useState(false)
-const[loading,setLoading]=useState(false)
+  const [loadingGit, setLoadingGit] = useState(false);
+  const [loading, setLoading] = useState(false);
   // ! VALID EMAIL ADDRESS
   function checkEmailOnChange(e) {
     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(e.target.value)
@@ -43,17 +43,16 @@ const[loading,setLoading]=useState(false)
       : setCheckMatchInPassword(true);
   }
 
+  // use navigate
 
-  // use navigate 
-
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   //! handle form login
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setCheckValidEmail(false);
     setCheckStrongPassword(false);
-    setCheckMatchInPassword(false)
-    setBackendMessage('')
+    setCheckMatchInPassword(false);
+    setBackendMessage("");
     const form = document.querySelector("form");
 
     const form_data = new FormData(form);
@@ -92,34 +91,35 @@ const[loading,setLoading]=useState(false)
     }
 
     // ! CREATE A NEW USER ACCOUNT
-    const body={
-      name:name,
-      email:email,
-      password:password
-    }
+    const body = {
+      name: name,
+      email: email,
+      password: password,
+    };
 
-    setLoading(true)
-    CreateAccount_Api(body).then(result=>{
-      console.log(result.data)
-      setLoading(false)
+    setLoading(true);
+    CreateAccount_Api(body)
+      .then((result) => {
+        console.log(result.data);
+        setLoading(false);
 
-      if(result.data.redirectToLogin===true
-       && result.data.message=="user created successfully" ){
-       navigate("/con_access",{replace:true})
-       }
-    }).catch(error=>{
-      console.log(error)
-      setLoading(false)
-      if(error.code=="ERR_NETWORK"){
-        return setBackendMessage(error.message)
-      }
-      if(error.response.status==401){
-        setBackendMessage(error.response.data.errorMessage)
-
-      }
-
-    })
-
+        if (
+          result.data.redirectToLogin === true &&
+          result.data.message == "user created successfully"
+        ) {
+          navigate("/con_access", { replace: true });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+        if (error.code == "ERR_NETWORK") {
+          return setBackendMessage(error.message);
+        }
+        if (error.response.status == 401) {
+          setBackendMessage(error.response.data.errorMessage);
+        }
+      });
   };
 
   //! showPassword or hide password
@@ -148,7 +148,7 @@ const[loading,setLoading]=useState(false)
 
   // !login with git
   function loginWithGithub() {
-    setLoadingGit(true)
+    setLoadingGit(true);
     window.location.assign(
       "https://github.com/login/oauth/authorize?client_id=" +
         import.meta.env.VITE_CLIENT_ID
@@ -158,14 +158,17 @@ const[loading,setLoading]=useState(false)
   return (
     <div className="Login_container" data-theme={"dark"}>
       <div className="LoginForm_container">
-      {loading && (
+        {loading && (
           <div className="loader">
             <img src={loadingImage} alt="" />
           </div>
         )}
         <h3 className="LoginText">Create an account</h3>
 
-        <div className={`signedInWith_Container ${loadingGit ?"loadingGit":""}`} onClick={loginWithGithub}>
+        <div
+          className={`signedInWith_Container ${loadingGit ? "loadingGit" : ""}`}
+          onClick={loginWithGithub}
+        >
           <h4> login with github</h4>
           <i className="fa-brands fa-github" id="git_icons"></i>
         </div>
@@ -250,7 +253,9 @@ const[loading,setLoading]=useState(false)
                 name="con-password"
                 onChange={checkIfPasswordsMatchOnChange}
                 autoComplete="off"
-                className={`${checkMatchInPassword===true?"matchInPass":""}`}
+                className={`${
+                  checkMatchInPassword === true ? "matchInPass" : ""
+                }`}
                 placeholder="enter your password again"
               />
               {show2 ? (
@@ -274,8 +279,9 @@ const[loading,setLoading]=useState(false)
         </div>
 
         <div className="tips">
-          <Link>
-            <p className="blueText prompts">Forgotten password ?</p>
+          
+          <Link to={"/con_access"}>
+            <p className="blueText prompts">Have an account ?</p>
           </Link>
 
           <div className="tipsDesc">

@@ -202,8 +202,11 @@ function LoginPage() {
         </div>
 
         <div className="tips">
-          <Link>
+          <Link to={"/reset_pass"}>
             <p className="blueText prompts">Forgotten password ?</p>
+          </Link>
+          <Link to={"/create_acc"}>
+            <p className="blueText prompts">Don't have an account ?</p>
           </Link>
 
           <div className="tipsDesc">

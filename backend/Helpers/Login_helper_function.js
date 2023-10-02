@@ -1,6 +1,6 @@
 import { usersCollection } from "../database/Schema/UsersSchema.js"
 import jwt from "jsonwebtoken"
-import  bcryptjs from 'bcryptjs'
+import  bcrypt from 'bcryptjs'
 import { generateToken } from "./TokensGenerator.js"
 export const Login_helper_function=async(req,res)=>{
 
@@ -19,11 +19,13 @@ export const Login_helper_function=async(req,res)=>{
 // if user exist check the password if is valid
  const password_from_db= user_exist.password
 // validate the password
-const is_password_valid=await bcryptjs.compare(password,password_from_db,(err,result)=>{
-    if(err){
-        return res.status(400).json({errorMessage:"invalid login credentials"})
-    }
-})
+const is_password_valid= await bcrypt.compare(password,password_from_db)
+if(!is_password_valid){
+    
+        return res.status(401).json({errorMessage:"invalid login credentials"})
+    
+}
+
 
 // !create a token for the user if he or she exists in the database
 
