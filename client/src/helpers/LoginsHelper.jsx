@@ -39,12 +39,12 @@ export const resetPassword=async(email)=>{
 
 
 
-export const getReadmeFile=async(access_token)=>{
+export const getReadmeFile=async(file)=>{
   const username="Anericokakai"
   const repo='Simple_Intergration'
   const folderPath="docs/"
  const branch='documentations'
-  const readmeFilename='LoginReadme.md'
+  const readmeFilename=`${file}.md`
   
   const token = import.meta.env.VITE_ACCESS_TOKEN;
    

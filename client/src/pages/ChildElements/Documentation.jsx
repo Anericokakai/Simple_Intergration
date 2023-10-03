@@ -13,7 +13,7 @@ import { ActiveLink } from "../../helpers/CustomsHelper";
 function Documentation() {
 
  
-  const {docs,loadingDocs,docsError,decodedDocs}=useSelector(store=>store.docsSlice)
+
   const { apis, loading, apiError } = useSelector((store) => store.ApisSlice);
   
   return (

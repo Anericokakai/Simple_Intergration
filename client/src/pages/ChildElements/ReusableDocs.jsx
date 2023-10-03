@@ -12,24 +12,34 @@ import HeaderReusable from "../../components/HeaderReusable";
 import { ActiveLink } from "../../helpers/CustomsHelper";
 import { getReadmeFile } from "../../helpers/LoginsHelper";
 function ReusableDocs() {
-  const { docs, loadingDocs, docsError, decodedDocs } = useSelector(
-    (store) => store.docsSlice
-  );
-  const { apis, loading, apiError } = useSelector((store) => store.ApisSlice);
+  
+  const[loading,setLoading]=useState()
+  const [documentation,setDocumentation]=useState()
+const [dataLoaded,setDataLoaded]=useState(false)
   const {page}=useParams()
-  console.log(page)
+ 
 
 
   useEffect(()=>{
+
+   if(!dataLoaded){
+    setLoading(true)
     getReadmeFile(page).then(data=>{
-      console.log(data)
+      const decodedFile=atob(data?.content)
+      setLoading(false)
+      setDataLoaded(true)
+      setDocumentation(decodedFile)
+    }).catch(error=>{
+      console.log(error)
     })
+    
+   }
 
   },[page])
   return (
     <div>
       <article className="markdown-body">
-        {loadingDocs ? (
+        {loading ? (
           <div>
             <h1>loading data</h1>
             <div className="loader">
@@ -57,7 +67,7 @@ function ReusableDocs() {
               },
             }}
           >
-            {decodedDocs}
+            {documentation}
           </ReactMarkdown>
         )}
       </article>

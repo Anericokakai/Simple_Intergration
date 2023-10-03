@@ -10,7 +10,7 @@ import { fetchAvailableApis, fetchDocumentation } from './Thunks/FecthApis'
 import { setDecodedDocs } from './slice/DocumentationSlice'
 function App() {
  
-  const { apis, loading, apiError } = useSelector((store) => store.ApisSlice);
+  
 
 
 
@@ -33,11 +33,7 @@ function App() {
 
   },[])
   
-  const {content}=docs
-  if(content){
-    const decodeToString=atob(content)
-   dispatch(setDecodedDocs(decodeToString))
-  }
+ 
 
 
   const [theme,setTheme]=useLocalStorage("theme"?"dark":"light")
