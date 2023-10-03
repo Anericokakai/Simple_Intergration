@@ -21,11 +21,11 @@ function ReusableDocs() {
 
 
   useEffect(()=>{
-    getReadmeFile().then(data=>{
+    getReadmeFile(page).then(data=>{
       console.log(data)
     })
 
-  },[])
+  },[page])
   return (
     <div>
       <article className="markdown-body">
