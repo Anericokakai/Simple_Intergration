@@ -7,48 +7,29 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useState } from "react";
 import loadingImg from "../../assets/load2.gif";
 import { useSelector } from "react-redux";
+import { Link, Outlet, useParams } from "react-router-dom";
+import HeaderReusable from "../../components/HeaderReusable";
+import { ActiveLink } from "../../helpers/CustomsHelper";
 function Documentation() {
 
  
   const {docs,loadingDocs,docsError,decodedDocs}=useSelector(store=>store.docsSlice)
-
+  const { apis, loading, apiError } = useSelector((store) => store.ApisSlice);
+  console.log(apis)
   return (
+    <>
+  <header>
+{
+  apis&&apis?.result?.map(singleLink=>{
+  return <ActiveLink to={singleLink.link} className=""> {singleLink.api_name}</ActiveLink>
+  })
+}
+  </header>
     <div className="documentContainer">
-      <article className="markdown-body">
-        {loadingDocs ? (
-          <div>
-         
-            <h1>loading data</h1>
-            <div className="loader">
-              <img src={loadingImg} alt="" />
-            </div>
-          </div>
-        ) : (
-          <ReactMarkdown
-            components={{
-              code: ({ node, inline, className, children, ...props }) => {
-                const match = /language-(\w+)/.exec(className || "");
-                return !inline && match ? (
-                  <SyntaxHighlighter
-                    language={match[1]}
-                    style={atomDark}
-                    {...props}
-                  >
-                    {String(children).replace(/\n$/, "")}
-                  </SyntaxHighlighter>
-                ) : (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
-                );
-              },
-            }}
-          >
-            {decodedDocs}
-          </ReactMarkdown>
-        )}
-      </article>
+    <Outlet></Outlet>
+     
     </div>
+    </>
   );
 }
 

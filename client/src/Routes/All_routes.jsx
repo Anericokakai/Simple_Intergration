@@ -6,6 +6,8 @@ import LoginPage from "../pages/LoginPage";
 import Home_page from "../pages/Home_page";
 import CreateAccount from "../pages/Create_Account";
 import ResetPass from "../pages/ResetPass";
+import { Component } from "react";
+import ReusableDocs from "../pages/ChildElements/ReusableDocs";
 
 
 
@@ -22,7 +24,14 @@ const user_routes = [
             element:<RequireAuth><ApiKey_page/></RequireAuth>
         },{
             path:"/home/docs",
-            element:<Documentation/>
+            element:<Documentation/>,
+            children:[
+              {
+                path:"/home/docs/:page",
+                element:<ReusableDocs/>
+              }
+            ]
+
         }
     ]
   },
