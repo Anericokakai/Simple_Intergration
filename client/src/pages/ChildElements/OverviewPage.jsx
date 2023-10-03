@@ -30,9 +30,7 @@ function OverviewPage() {
       dispatch(fetchDocumentation())
       setDataIsFetched(true)
     
-  getReadmeFile().then(data=>{
-    console.log(data)
-  })
+
 
   },[])
   

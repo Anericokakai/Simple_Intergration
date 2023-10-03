@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { Link, Outlet, useParams } from "react-router-dom";
 import HeaderReusable from "../../components/HeaderReusable";
 import { ActiveLink } from "../../helpers/CustomsHelper";
+import { getReadmeFile } from "../../helpers/LoginsHelper";
 function ReusableDocs() {
   const { docs, loadingDocs, docsError, decodedDocs } = useSelector(
     (store) => store.docsSlice
@@ -17,6 +18,14 @@ function ReusableDocs() {
   const { apis, loading, apiError } = useSelector((store) => store.ApisSlice);
   const {page}=useParams()
   console.log(page)
+
+
+  useEffect(()=>{
+    getReadmeFile().then(data=>{
+      console.log(data)
+    })
+
+  },[])
   return (
     <div>
       <article className="markdown-body">
