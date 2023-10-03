@@ -894,6 +894,16 @@ display: none;
   content: '';
 }
 
+@media screen  and (max-width:800px){
+  .markdown-body h1{
+    font-size: 22px;
+  }
+  .markdown-body h2{
+    font-size: 19px;
+  }
+
+  
+}
 
    .BodyLogin{
   color: var(--color);
@@ -986,5 +996,6 @@ border-radius: 10px;
     height: 50px;
     font-size: 20px;
   }
+ 
   
 }

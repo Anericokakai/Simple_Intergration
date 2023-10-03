@@ -4,6 +4,7 @@ const initialState = {
   user_information: [],
   LogInStatus: null,
   token: "",
+  
 };
 
 const userInfoSlice = createSlice({

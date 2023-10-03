@@ -3,34 +3,19 @@ import ReactMarkdown from "react-markdown";
 import "github-markdown-css";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { fetchReadme } from "../../helpers/FetchReadme";
+
 import { useState } from "react";
 import loadingImg from "../../assets/load2.gif";
+import { useSelector } from "react-redux";
 function Documentation() {
-  const [documentationData, setDocumentationData] = useState();
-  const [loading, setLoading] = useState();
-  useEffect(() => {
-    setLoading(true);
-    const token = import.meta.env.VITE_ACCESS_TOKEN;
-    fetchReadme(token)
-      .then((data) => {
-        setLoading(false);
 
-        const decodedData = atob(data.data.content);
-        setDocumentationData(decodedData);
-        console.log(decodedData);
-      })
-      .catch((error) => {
-        console.log(error);
-        // setLoading(false)
-      });
-  }, []);
-  console.log(loading);
+ 
+  const {docs,loadingDocs,docsError,decodedDocs}=useSelector(store=>store.docsSlice)
 
   return (
     <div className="documentContainer">
       <article className="markdown-body">
-        {loading ? (
+        {loadingDocs ? (
           <div>
          
             <h1>loading data</h1>
@@ -59,7 +44,7 @@ function Documentation() {
               },
             }}
           >
-            {documentationData}
+            {decodedDocs}
           </ReactMarkdown>
         )}
       </article>

@@ -4,14 +4,15 @@ export const create_newApi_Helper=async(req,res)=>{
 try {
 
 
-    const {name,desc}=req.body;
-    if(!name||!desc){
+    const {name,desc,link}=req.body;
+    if(!name||!desc||!link){
         return res.status(401).json({errorMessage:"invalid inputs credentials !!"})
     }
 
     const newApiGenerated=await Api_collection.create({
         api_name:name,
-        api_desc:desc
+        api_desc:desc,
+        link
     })
 
     if(newApiGenerated){

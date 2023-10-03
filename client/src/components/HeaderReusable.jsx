@@ -1,11 +1,41 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { ActiveLink } from "../helpers/CustomsHelper";
+import { setDecodedDocs } from "../slice/DocumentationSlice";
+import { fetchAvailableApis, fetchDocumentation } from "../Thunks/FecthApis";
 function HeaderReusable() {
   const { user_information, LogInStatus, token } = useSelector(
     (store) => store.userLogInDetails
   );
+  const {docs,loadingDocs,docsError,decodedDocs}=useSelector(store=>store.docsSlice)
+  const {apis,loading,apiError}=useSelector(store=>store.ApisSlice)
+  const[dataIsFetched,setDataIsFetched]=useState(false)
+  const dispatch=useDispatch()
+
+ 
+
+  useEffect(()=>{
+ 
+    if(!dataIsFetched){
+
+      dispatch(fetchAvailableApis())
+      dispatch(fetchDocumentation())
+      setDataIsFetched(true)
+    }
+  
+
+  },[dataIsFetched])
+  
+  const {content}=docs
+  if(content){
+    const decodeToString=atob(content)
+   dispatch(setDecodedDocs(decodeToString))
+  }
+ 
+
+
 
   const navigate = useNavigate();
   // ! navigate to login function
