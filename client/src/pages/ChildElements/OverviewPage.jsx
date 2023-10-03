@@ -1,7 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { getReadmeFile } from "../../helpers/LoginsHelper";
 import "../../index.css";
+import { setDecodedDocs } from "../../slice/DocumentationSlice";
+import { fetchAvailableApis, fetchDocumentation } from "../../Thunks/FecthApis";
 function OverviewPage() {
   const { user_information, LogInStatus, token } = useSelector(
     (store) => store.userLogInDetails
@@ -10,6 +13,35 @@ function OverviewPage() {
   const {page}= useParams()
   const { apis, loading, apiError } = useSelector((store) => store.ApisSlice);
   console.log(apis)
+
+
+
+  const {docs,loadingDocs,docsError,decodedDocs}=useSelector(store=>store.docsSlice)
+
+  const[dataIsFetched,setDataIsFetched]=useState(false)
+  const dispatch=useDispatch()
+
+ 
+
+  useEffect(()=>{
+ 
+
+      dispatch(fetchAvailableApis())
+      dispatch(fetchDocumentation())
+      setDataIsFetched(true)
+    
+  getReadmeFile().then(data=>{
+    console.log(data)
+  })
+
+  },[])
+  
+  const {content}=docs
+  if(content){
+    const decodeToString=atob(content)
+   dispatch(setDecodedDocs(decodeToString))
+  }
+ 
   return (
     <section className="OverViewPage">
       <div className="OverView_grid_Container">

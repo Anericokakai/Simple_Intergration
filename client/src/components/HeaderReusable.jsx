@@ -9,30 +9,6 @@ function HeaderReusable() {
   const { user_information, LogInStatus, token } = useSelector(
     (store) => store.userLogInDetails
   );
-  const {docs,loadingDocs,docsError,decodedDocs}=useSelector(store=>store.docsSlice)
-  const {apis,loading,apiError}=useSelector(store=>store.ApisSlice)
-  const[dataIsFetched,setDataIsFetched]=useState(false)
-  const dispatch=useDispatch()
-
- 
-
-  useEffect(()=>{
- 
-    if(!dataIsFetched){
-
-      dispatch(fetchAvailableApis())
-      dispatch(fetchDocumentation())
-      setDataIsFetched(true)
-    }
-  
-
-  },[dataIsFetched])
-  
-  const {content}=docs
-  if(content){
-    const decodeToString=atob(content)
-   dispatch(setDecodedDocs(decodeToString))
-  }
  
 
 

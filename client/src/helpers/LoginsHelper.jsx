@@ -36,3 +36,25 @@ export const resetPassword=async(email)=>{
   const response=await axios.post("http://localhost:6060/simpleIntegration/api/v1/forgot_pass",email)
   return response
 }
+
+
+
+export const getReadmeFile=async(access_token)=>{
+  const username="Anericokakai"
+  const repo='Simple_Intergration'
+  const folderPath="docs/"
+ const branch='documentations'
+  const readmeFilename='LoginReadme.md'
+  
+  const token = import.meta.env.VITE_ACCESS_TOKEN;
+   
+  const readMeUrl=`https://api.github.com/repos/${username}/${repo}/contents/${folderPath}${readmeFilename}?ref=${branch}`
+  const result=await axios.get(readMeUrl,{
+       Headers:{
+           "Authorization":`token ${token}`
+       }
+   })
+   return result.data
+
+
+}
