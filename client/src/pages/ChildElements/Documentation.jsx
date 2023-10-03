@@ -9,26 +9,26 @@ import loadingImg from "../../assets/load2.gif";
 import { useSelector } from "react-redux";
 import { Link, Outlet, useParams } from "react-router-dom";
 import HeaderReusable from "../../components/HeaderReusable";
-import { ActiveLink } from "../../helpers/CustomsHelper";
+import { ActiveLink, NestedActiveLinks } from "../../helpers/CustomsHelper";
 function Documentation() {
-
- 
-
   const { apis, loading, apiError } = useSelector((store) => store.ApisSlice);
-  
+
   return (
     <>
-  <header>
-{
-  apis&&apis?.result?.map(singleLink=>{
-  return <ActiveLink to={singleLink.link} key={singleLink._id} > {singleLink.api_name}</ActiveLink>
-  })
-}
-  </header>
-    <div className="documentContainer">
-    <Outlet></Outlet>
-     
-    </div>
+      <header className="nestedHeader" >
+        {apis &&
+          apis?.result?.map((singleLink) => {
+            return (
+              <NestedActiveLinks to={singleLink.link} key={singleLink._id}>
+                {" "}
+                {singleLink.api_name}
+              </NestedActiveLinks>
+            );
+          })}
+      </header>
+      <div className="documentContainer">
+        <Outlet></Outlet>
+      </div>
     </>
   );
 }

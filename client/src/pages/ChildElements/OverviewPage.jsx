@@ -16,9 +16,9 @@ function OverviewPage() {
 
 
 
-  const {docs,loadingDocs,docsError,decodedDocs}=useSelector(store=>store.docsSlice)
 
-  const[dataIsFetched,setDataIsFetched]=useState(false)
+
+
   const dispatch=useDispatch()
 
  
@@ -27,18 +27,14 @@ function OverviewPage() {
  
 
       dispatch(fetchAvailableApis())
-      dispatch(fetchDocumentation())
-      setDataIsFetched(true)
+  
+   
     
 
 
   },[])
   
-  const {content}=docs
-  if(content){
-    const decodeToString=atob(content)
-   dispatch(setDecodedDocs(decodeToString))
-  }
+  
  
   return (
     <section className="OverViewPage">

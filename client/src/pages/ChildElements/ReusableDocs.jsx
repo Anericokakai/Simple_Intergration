@@ -7,70 +7,63 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useState } from "react";
 import loadingImg from "../../assets/load2.gif";
 import { useSelector } from "react-redux";
-import { Link, Outlet, useParams } from "react-router-dom";
-import HeaderReusable from "../../components/HeaderReusable";
-import { ActiveLink } from "../../helpers/CustomsHelper";
+import { useParams } from "react-router-dom";
+
 import { getReadmeFile } from "../../helpers/LoginsHelper";
 function ReusableDocs() {
-  
-  const[loading,setLoading]=useState()
-  const [documentation,setDocumentation]=useState()
-const [dataLoaded,setDataLoaded]=useState(false)
-  const {page}=useParams()
- 
+  const [loading, setLoading] = useState();
+  const [documentation, setDocumentation] = useState();
 
+  const { page } = useParams();
 
-  useEffect(()=>{
+  useEffect(() => {
+    setLoading(true);
+    getReadmeFile(page)
+      .then((data) => {
+        const decodedFile = atob(data?.content);
+        setLoading(false);
 
-   if(!dataLoaded){
-    setLoading(true)
-    getReadmeFile(page).then(data=>{
-      const decodedFile=atob(data?.content)
-      setLoading(false)
-      setDataLoaded(true)
-      setDocumentation(decodedFile)
-    }).catch(error=>{
-      console.log(error)
-    })
-    
-   }
+        setDocumentation(decodedFile);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [page]);
 
-  },[page])
   return (
     <div>
-      <article className="markdown-body">
-        {loading ? (
-          <div>
-            <h1>loading data</h1>
-            <div className="loader">
-              <img src={loadingImg} alt="" />
-            </div>
-          </div>
-        ) : (
-          <ReactMarkdown
-            components={{
-              code: ({ node, inline, className, children, ...props }) => {
-                const match = /language-(\w+)/.exec(className || "");
-                return !inline && match ? (
-                  <SyntaxHighlighter
-                    language={match[1]}
-                    style={atomDark}
-                    {...props}
-                  >
-                    {String(children).replace(/\n$/, "")}
-                  </SyntaxHighlighter>
-                ) : (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
-                );
-              },
-            }}
-          >
-            {documentation}
-          </ReactMarkdown>
-        )}
+      {loading?<div className="loadingData">
+        <h1>loading data</h1>
+        <div className="loader">
+          <img src={loadingImg} alt="" />
+        </div>
+      </div>:<article className="markdown-body">
+        <ReactMarkdown
+          components={{
+            code: ({ node, inline, className, children, ...props }) => {
+              const match = /language-(\w+)/.exec(className || "");
+              return !inline && match ? (
+                <SyntaxHighlighter
+                  language={match[1]}
+                  style={atomDark}
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, "")}
+                </SyntaxHighlighter>
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
+            },
+          }}
+        >
+          {documentation}
+        </ReactMarkdown>
       </article>
+
+      }
+      
     </div>
   );
 }

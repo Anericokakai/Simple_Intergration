@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { showPassword } from "../helpers/CustomsHelper";
-import { getGitHubUserData, LoginFunction, loginWithGitHubApi } from "../helpers/LoginsHelper";
+import {
+  getGitHubUserData,
+  LoginFunction,
+  loginWithGitHubApi,
+} from "../helpers/LoginsHelper";
 import "../index.css";
 import loadingImage from "../assets/load2.gif";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogInStatus, setToken, set_userData } from "../slice/userInfoSlice";
 function LoginPage() {
+  // ! declared varibales
 
-  // ! declared varibales 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const dispatch=useDispatch()
-  const navigate=useNavigate()
-
- const[accessToken,setAccessToken]=useState("")
+  const [accessToken, setAccessToken] = useState("");
   const [show, setShowPassword] = useState(false);
   const [formMessage, setFormMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [backEndMessage, setBackendMessage] = useState();
   const [checkValidEmail, setCheckValidEmail] = useState();
-  const[loadingGit,setLoadingGit]=useState(false)
+  const [loadingGit, setLoadingGit] = useState(false);
   // !SHOW OR HIDE PASSWORDS
   const showOrHide = () => {
     const inputType_password = document.querySelector("#password");
@@ -66,13 +69,13 @@ function LoginPage() {
       .then((data) => {
         console.log(data.data);
         setLoading(false);
-        const userInfo= data.data.response.user
-        const user_token=data.data.response.token
-        const userStatus=data.data.validUser
-        dispatch( set_userData(userInfo))
-        dispatch(setToken(user_token))
-        dispatch(setLogInStatus(userStatus))
-        navigate("/home/overview",{replace:true})
+        const userInfo = data.data.response.user;
+        const user_token = data.data.response.token;
+        const userStatus = data.data.validUser;
+        dispatch(set_userData(userInfo));
+        dispatch(setToken(user_token));
+        dispatch(setLogInStatus(userStatus));
+        navigate("/home/overview", { replace: true });
       })
       .catch((err) => {
         setLoading(false);
@@ -83,26 +86,24 @@ function LoginPage() {
       });
   };
 
-
   // login with github
 
   useEffect(() => {
     const params = window.location.search;
     const urlParams = new URLSearchParams(params);
     const code_by_git = urlParams.get("code");
-  
 
-    if(code_by_git){
-     setLoadingGit(true)
-      loginWithGitHubApi(code_by_git).then(data=>{
-        console.log(data)
-        setAccessToken(data.data.token)
-      })
-      .catch(error=>{
-        console.log(error)
-      })
+    if (code_by_git) {
+      setLoadingGit(true);
+      loginWithGitHubApi(code_by_git)
+        .then((data) => {
+          console.log(data);
+          setAccessToken(data.data.token);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-
   }, []);
   function loginWithGithub() {
     window.location.assign(
@@ -110,20 +111,19 @@ function LoginPage() {
         import.meta.env.VITE_CLIENT_ID
     );
   }
-  useEffect(()=>{
-    if(accessToken){
-      console.log(accessToken)
-      getGitHubUserData(accessToken).then(result=>{
-        setLoadingGit(false)
-        console.log(result)
-        dispatch(set_userData(result.data.userInfo))
-        dispatch(setToken(result.data.token))
-        dispatch(setLogInStatus(result.data.validUser))
-        navigate("/home/overview",{replace:true})
-      })
+  useEffect(() => {
+    if (accessToken) {
+      console.log(accessToken);
+      getGitHubUserData(accessToken).then((result) => {
+        setLoadingGit(false);
+        console.log(result);
+        dispatch(set_userData(result.data.userInfo));
+        dispatch(setToken(result.data.token));
+        dispatch(setLogInStatus(result.data.validUser));
+        navigate("/home/overview", { replace: true });
+      });
     }
-    
-  },[accessToken])
+  }, [accessToken]);
 
   return (
     <div className="Login_container" data-theme={"dark"}>
@@ -135,9 +135,12 @@ function LoginPage() {
         )}
         <h3 className="LoginText">Confirm access</h3>
 
-        <div className={`signedInWith_Container ${loadingGit ?"loadingGit":""}`} onClick={loginWithGithub}>
+        <div
+          className={`signedInWith_Container ${loadingGit ? "loadingGit" : ""}`}
+          onClick={loginWithGithub}
+        >
           <h4> login with github</h4>
-          <i className="fa-brands fa-github" id="git_icons"   ></i>
+          <i className="fa-brands fa-github" id="git_icons"></i>
         </div>
         <h2>Or</h2>
         {formMessage && (

@@ -4,6 +4,7 @@ const initialState = {
   user_information: [],
   LogInStatus: null,
   token: "",
+  theme:"light"
   
 };
 
@@ -20,7 +21,10 @@ const userInfoSlice = createSlice({
     setLogInStatus: (state, action) => {
       state.LogInStatus = action.payload;
     },
+    setTheme:(state,action)=>{
+      state.theme=action.payload
+    }
   },
 });
 export default userInfoSlice.reducer
-export const {set_userData,setLogInStatus,setToken}=userInfoSlice.actions
+export const {set_userData,setLogInStatus,setToken,setTheme}=userInfoSlice.actions

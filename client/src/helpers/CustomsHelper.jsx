@@ -9,6 +9,14 @@ export const ActiveLink = (props) => {
   );
 };
 
+export const NestedActiveLinks=(props)=>{
+  return <NavLink className={({isActive})=>{
+    return isActive?"activeNested":"notActiveNested"
+  }}
+  {...props}>
+
+  </NavLink>
+}
 
 
 // !show or hide passwords

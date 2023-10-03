@@ -4,7 +4,7 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 export const RequireAuth = ({ children }) => {
   const Location = useLocation();
   const navigate=useNavigate()
-  const { user_information, LogInStatus, token } = useSelector(
+  const {  LogInStatus, token } = useSelector(
     (store) => store.userLogInDetails
   );
   console.log(LogInStatus)
