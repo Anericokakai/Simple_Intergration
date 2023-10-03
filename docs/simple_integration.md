@@ -7,7 +7,7 @@
 1. Create an account with simple integration ,[here is the link]("http://localhost:5173/home/con_access")
 
 2. Generate an api key at the dashBoard
-![image]("https://ibb.co/Dwcrm3v")
+![image]("https://i.pinimg.com/564x/35/e5/37/35e537444b20ab141e3c3b4e68241aba.jpg")
 
 3. use your api key on each request that you make to any of our apis 
 >***REMEMBER TO KEEP YOUR API KEY AS A SECRET IF !!!*** When you feel that your api key has been accessed by other people always generate  new one
