@@ -134,6 +134,12 @@ function LoginPage() {
             <img src={loadingImage} alt="" />
           </div>
         )}
+
+        {loadingGit && (
+          <div className="loader">
+            <img src={loadingImage} alt="" />
+          </div>
+        )}
         <h3 className="LoginText">Confirm access</h3>
 
         <div

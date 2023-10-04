@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  list-style: none;
  }
  
  :root {
@@ -34,6 +35,7 @@
 --redWarning:#F85149;
 --warning-bg:#f8524932;
 --green:green;
+--darkBox:0px 4px 6px -1px #bb86fc , 0px 2px 4px -1px #3700b3;
 
 
 
@@ -552,10 +554,10 @@ overflow-y: hidden;
   will-change: filter;
   transition: filter 300ms;
 }
-#git_icons:hover {
+/* #git_icons:hover {
   background-color: var(--rest-of-page-color-bg);
   filter: drop-shadow(0 0 2em var(--green));
-}
+} */
 .Form{
 padding: 2em 0;
 }
@@ -925,6 +927,9 @@ background-color: var(--rest-of-page-color-bg);
 blockquote p{
   color: var(--text-color);
 }
+pre {
+  font-size: 18px;
+}
 
 @media screen  and (max-width:800px){
   .markdown-body h1{
@@ -1031,3 +1036,84 @@ border-radius: 10px;
  
   
 }
+
+
+/* ! ### ##################################  */
+
+/* ! SETTING DOCUMENTATION  CSS*/
+
+.accountPage{
+  position: relative;
+  overflow-x: hidden;
+}
+
+.SettingNav{
+  position: absolute;
+  width: 100%;
+  background-color: #0d111758;
+  height: 100%;
+  z-index: 10;
+  
+  
+}
+
+.hideSettingNav{
+  display: none;
+}
+.showSettingNav{
+  display: block;
+}
+
+
+.nav{
+  position: absolute;
+  right: 0;
+height: 100%;
+background-color: var(--header-bg);
+width: 300px;
+top: 0;
+border-radius: 20px 0 0 20px;
+display: grid;
+text-align: center;
+padding: 3em 10px 10px 10px;
+border: 1px solid var(--border-color);
+box-shadow:var(--darkBox) ;
+transition: right 0.6s ease;
+}
+.settingUl{
+ display: flex;
+ flex-direction: column;
+ gap: 2em;
+ margin-top: 2em;
+ font-size: 20px;
+ font-weight: 600;
+ letter-spacing: 1px;
+
+}
+.settingUl li{
+  cursor: pointer;
+}
+
+.hideNav{
+position: absolute;
+margin: 1em;
+
+}
+.showSettings{
+  right: 0;
+}
+.hideSettings{
+  right: -100%;
+}
+
+@media screen  and (min-width:800px) {
+  .nav{
+    width: 400px;
+  }
+  
+}
+
+
+
+
+

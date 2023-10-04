@@ -5,12 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { ActiveLink } from "../helpers/CustomsHelper";
 import { setDecodedDocs } from "../slice/DocumentationSlice";
 import { fetchAvailableApis, fetchDocumentation } from "../Thunks/FecthApis";
-function HeaderReusable() {
+function HeaderReusable({show}) {
   const { user_information, LogInStatus, token } = useSelector(
     (store) => store.userLogInDetails
   );
  
+const Show_Settings=()=>{
+  show(true)
 
+}
 
 
   const navigate = useNavigate();
@@ -39,7 +42,7 @@ function HeaderReusable() {
           <button className="Icon_btn">
             <i className="fa-solid fa-magnifying-glass" id="iconFade"></i>
           </button>
-          <button className="Icon_btn">
+          <button className="Icon_btn" onClick={Show_Settings}>
             <i className="fa-solid fa-gear" id="iconFade"></i>
           </button>
         </div>
@@ -57,7 +60,7 @@ function HeaderReusable() {
                 <h5>api_key</h5>
               </button>
             </ActiveLink>
-            <ActiveLink to={"/home/docs/form_api"}>
+            <ActiveLink to={"/home/docs/simple_integration"}>
               <button className="dash_btn_lowerHeader">
                 <h5>documentation</h5>
               </button>
@@ -65,7 +68,7 @@ function HeaderReusable() {
           </>
         ) : (
           <>
-            <ActiveLink to={"/home/docs"}>
+            <ActiveLink to={"/home/docs/simple_integration"}>
               <button className="dash_btn_lowerHeader">
                 <h5>documentation</h5>
               </button>

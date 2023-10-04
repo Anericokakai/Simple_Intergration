@@ -164,6 +164,11 @@ function CreateAccount() {
             <img src={loadingImage} alt="" />
           </div>
         )}
+         {loadingGit && (
+          <div className="loader">
+            <img src={loadingImage} alt="" />
+          </div>
+        )}
         <h3 className="LoginText">Create an account</h3>
 
         <div
