@@ -1,4 +1,5 @@
 import React from "react";
+import { ActiveLink } from "../helpers/CustomsHelper";
 
 function Settings({ show,showValue }) {
   const hideNav = (e) => {
@@ -13,7 +14,10 @@ function Settings({ show,showValue }) {
             <i className="fa-solid fa-x" id="iconFade"></i>
           </button>
           <ul className="settingUl">
-            <li className="settingTo">appearance</li>
+            <li className="settingTo">
+
+              <ActiveLink to={"/home/settings"}>appearance</ActiveLink>
+            </li>
             <li className="settingTo">profile</li>
             <li className="settingTo">issues</li>
             <li className="settingTo">Contributions</li>

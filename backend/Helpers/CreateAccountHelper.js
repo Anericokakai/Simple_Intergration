@@ -1,6 +1,7 @@
 import { usersCollection } from "../database/Schema/UsersSchema.js";
  import bcryptjs from "bcryptjs"
 export const CreateAccount_Helper = async (req, res) => {
+  console.log(req.body)
   try {
     const { name, email, password } = req.body;
     

@@ -61,6 +61,7 @@
   --hover-btn:#646cff;
   --icon-btn:#1f2328;
   --form--bg:#ffff;
+  --warning-bg:#f8524932
   }
   
   *{
@@ -70,9 +71,7 @@
     text-decoration: none;
    
   }
-  body{
-    background-color: var(--rest-of-page-color-bg);
-  }
+ 
 .link_default {
   font-weight: 500;
   color: #646cff;
@@ -777,7 +776,7 @@ gap: 1em;
   border-radius: 10px;
   border: 1px solid var(--redWarning);
   background-color: var(--warning-bg);
-  color: var(--color);
+  color: var(--text-color);
   font-size: 17px;
   cursor: pointer;
 }
@@ -1114,6 +1113,46 @@ margin: 1em;
 }
 
 
+/* ! USER SETTINGS CSS */
+.settings{
+text-align: center;
+background-color: var(--rest-of-page-color-bg);
+  color: var(--text-color);
+ 
+}
+
+.settingContainer{
+
+  min-height: 100vh;
+}
+
+.availableThemes{
+  display: flex;
+  align-items: center;
+  padding: 2em 0;
+  justify-content: center;
+  gap: 2em;
+}
+.headings{
+  font-size: 22px;
+  padding-top: 1em;
+}
+.themeImage{
+  border: 1px solid var(--border-color);
+  
+  border-radius: 10px;
+  height: 150px;
+  cursor: pointer;
+
+}
+.themeImage img{
+ height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.selectedTheme{
+  border: 3px solid var(--green-text);
+}
 
 
 

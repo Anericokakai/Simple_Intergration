@@ -15,7 +15,8 @@ function Documentation() {
 
   return (
     <>
-      <header className="nestedHeader" >
+    <div className="nestedContainer">
+    <nav className="nestedHeader " >
         {apis &&
           apis?.result?.map((singleLink) => {
             return (
@@ -25,7 +26,8 @@ function Documentation() {
               </NestedActiveLinks>
             );
           })}
-      </header>
+      </nav>
+    </div>
       <div className="documentContainer">
         <Outlet></Outlet>
       </div>
