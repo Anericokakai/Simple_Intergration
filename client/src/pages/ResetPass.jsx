@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { resetPassword } from "../helpers/LoginsHelper";
 
 
@@ -33,8 +34,9 @@ return setError("invalid email  format!")
             }
         })
       };
+      const { theme } = useSelector((store) => store.userLogInDetails);
   return (
-    <section className="BodyLogin">
+    <section className="BodyLogin" data-theme={theme}>
       <div className="changePass">
         <form className="formBackend" onSubmit={handleNewPass}>
           <h1>Reset your password</h1>

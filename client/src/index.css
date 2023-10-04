@@ -554,7 +554,7 @@ overflow-y: hidden;
 }
 #git_icons:hover {
   background-color: var(--rest-of-page-color-bg);
-  filter: drop-shadow(0 0 2em green);
+  filter: drop-shadow(0 0 2em var(--green));
 }
 .Form{
 padding: 2em 0;
@@ -938,8 +938,8 @@ blockquote p{
 }
 
    .BodyLogin{
-  color: var(--color);
-  background-color:#0d1117;
+  color: var(--text-color);
+  background-color:var(--rest-of-page-color-bg);
   width: 100%;
   height: 100vh;
   padding: 1em;
@@ -957,7 +957,7 @@ blockquote p{
 .formBackend{
   display: flex;
   flex-direction: column;
-  border: 1px solid #7d8590;
+  border: 1px solid var(--border-color);
   min-width: 300px;
   max-width: 600px;
   padding: 4em 2em;
@@ -972,10 +972,10 @@ border-radius: 10px;
 }
 .backendInput input{
   border-radius: 10px;
-  border: 1px solid #7D8590;
+  border: 1px solid var(--border-color);
   background-color: transparent;
   height: 60px;
-  color: white;
+  color: var(--text-color);
   padding: 1em;
   font-size: 18px;
   
@@ -983,16 +983,16 @@ border-radius: 10px;
 .backendInput button{
   height: 60px;
   border-radius: 10px;
-  border: 1px solid #7D8590;
-  background-color: #238636;
-  color: white;
+  border: 1px solid var(--border-color);
+  background-color: var(--green-text);
+  color: var(--color);
   font-size: 23px;
   cursor: pointer;
   transition: all .25s;
 
 }
 .backendInput button:hover{
-  background-color: green;
+  background-color:green ;
 }
 .formBackend h1{
   text-align: center;

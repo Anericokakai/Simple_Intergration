@@ -5,6 +5,7 @@ import { showPassword } from "../helpers/CustomsHelper";
 import "../index.css";
 import loadingImage from "../assets/load2.gif";
 import { CreateAccount_Api } from "../helpers/CreateAccout";
+import { useSelector } from "react-redux";
 function CreateAccount() {
   const [formMessage, setFormMessage] = useState("");
   const [show, setShowPassword] = useState(false);
@@ -154,9 +155,9 @@ function CreateAccount() {
         import.meta.env.VITE_CLIENT_ID
     );
   }
-
+  const { theme } = useSelector((store) => store.userLogInDetails);
   return (
-    <div className="Login_container" data-theme={"dark"}>
+    <div className="Login_container" data-theme={theme}>
       <div className="LoginForm_container">
         {loading && (
           <div className="loader">

@@ -4,7 +4,7 @@ const initialState = {
   user_information: [],
   LogInStatus: null,
   token: "",
-  theme:"light"
+  theme:"dark"
   
 };
 

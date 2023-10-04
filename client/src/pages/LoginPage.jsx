@@ -123,10 +123,11 @@ function LoginPage() {
         navigate("/home/overview", { replace: true });
       });
     }
-  }, [accessToken]);
+  }, [accessToken]);const { theme } = useSelector((store) => store.userLogInDetails);
+
 
   return (
-    <div className="Login_container" data-theme={"dark"}>
+    <div className="Login_container" data-theme={theme}>
       <div className="LoginForm_container">
         {loading && (
           <div className="loader">
