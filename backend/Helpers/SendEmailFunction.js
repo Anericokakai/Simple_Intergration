@@ -48,9 +48,9 @@ export const sendEmailsHelpers=async(req,res)=>{
         });
         let message = {
           from: '"simple Integrations 👻" <simpleIntegration@gmail.com>', // sender address
-          to: "anericomisiko@gmail.com", // list of receivers
+          to: email, // list of receivers
           subject: "password reset ", // Subject line
-          text: `hey there`, // plain text body
+          text: `hello ,`, // plain text body
           html: `
           <!DOCTYPE html>
           <html>
@@ -64,8 +64,17 @@ export const sendEmailsHelpers=async(req,res)=>{
             border-radius:10px;
   
           }
+          .link{
+            text-align:center;
+          }
           .hs{
             color:white;
+          }
+          body{
+            color:white;
+            background-color: #0d1117;
+            width:100vw;
+            height:100vh;
           }
           </style>
         
@@ -73,8 +82,8 @@ export const sendEmailsHelpers=async(req,res)=>{
           <body>
           <h2 class="hs">Hello ${user_exist.name} ✔</h2>
           <br></br>
-          <p>here is the link to reset your password,the link will expire in  1 hour</p>
-          <a href="${link}"> <button class="restBtn"> reset password</button> </a>
+          <p>Here is the link to reset your password,the link will expire in  1 hour</p>
+          <a href="${link}" class="link"> <button class="restBtn"> reset password</button> </a>
           <p>Perfect your front end skills with apis</p>
           </body>
   

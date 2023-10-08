@@ -13,22 +13,27 @@ function ApiKey_page() {
   const { user_information, token } = useSelector(
     (store) => store.userLogInDetails
   );
+
   const handleClickForNewApi = () => {
     setLoadingNewApi(true);
     generateApiKey(user_information._id, token)
       .then((result) => {
         setLoadingNewApi(false);
+        console.log(result)
         dispatch(set_userData(result.data.info));
+      
       })
       .catch((error) => {
         setLoadingNewApi(false);
+        
         if (
-          error.response !== undefined &&
+(          error.response !== undefined &&
           error.response.data.tokenExpired === true &&
-          error.response.data.redirectToLogin === true
+          error.response.data.redirectToLogin === true)||error.response.status==401
         ) {
           navigate("/con_access", { replace: true });
         }
+      
       });
   };
   // ! copy text to clip board

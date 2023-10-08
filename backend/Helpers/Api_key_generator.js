@@ -12,15 +12,23 @@ export const generate_Api_key_Helper=async(req,res)=>{
 try {
     const userId= req.query.userId
     const githubId=req.query.gitId
+    console.log()
     // ! implement  find by id 
     const apiKeyLength=17
     const  apiKey = generateApiKey(apiKeyLength)
-    if(userId){
+    if(!userId){
+
+        return res.status(402).json({errorMessage:"invalid user credentials !"})
+    }
+    console.log(userId)
  
         const updateApiKey=await usersCollection.findByIdAndUpdate(userId,{
             secret_key:apiKey
+        },{
+            new:true
         })
 
+        console.log(updateApiKey)
         if(updateApiKey){
             return res.status(201).json({
                 info:updateApiKey,
@@ -34,25 +42,9 @@ try {
         }
 
 
-    }
+    
 
-    // find by github id
-    if(githubId){
-        const generatedApiKeyForGit=await usersCollection.findOneAndUpdate({git_hub_id:githubId},{
-            secret_key:apiKey
-        })
-
-        if(generatedApiKeyForGit){
-            return res.status(201).json({
-                apiKey:apiKey,
-                message:"api key generated successfully"
-            })
-        }
-        if(!generatedApiKeyForGit){
-            return res.status(403).json({errorMessage:"failed to update or generate a new api key ,please try again !"})
-        }
-    }
-
+  
 
 
 

@@ -19,7 +19,7 @@ Available_api_Route.get("/simpleIntegration/api/v1/apis", async (req, res) => {
   }
 });
 
-Available_api_Route.post("/simpleIntegration/api/v1/apis",validate_token,async (req, res) => {
+Available_api_Route.post("/simpleIntegration/api/v1/apis",async (req, res) => {
 create_newApi_Helper(req,res)
 
 });

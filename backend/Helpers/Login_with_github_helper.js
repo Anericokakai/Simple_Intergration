@@ -61,14 +61,19 @@ export const Get_user_data_helper = async (req, res) => {
       .then(async (data) => {
         const { id, name, login, avatar_url } = data.data;
 
+        let userData;
         //  ! check if the id exist in the database if not
         const user_exist = await usersCollection.findOne({ git_hub_id: id });
         if (!user_exist) {
-          await usersCollection.create({
+         const user= await usersCollection.create({
             name,
             avatar_url: avatar_url,
             git_hub_id: id,
           });
+          userData=user;
+        }
+        if(user_exist){
+          userData=user_exist;
         }
         // create a token and send it back
         const token_id = id;
@@ -78,7 +83,7 @@ export const Get_user_data_helper = async (req, res) => {
 
         res.status(200).json({
           token: token,
-          userInfo: user_exist,
+          userInfo: userData,
           validUser:true
         });
       })

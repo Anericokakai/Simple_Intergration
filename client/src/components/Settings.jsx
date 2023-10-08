@@ -16,7 +16,7 @@ function Settings({ show,showValue }) {
           <ul className="settingUl">
             <li className="settingTo">
 
-              <ActiveLink to={"/home/settings"}>appearance</ActiveLink>
+              <ActiveLink to={"/home/settings"} onClick={hideNav}>appearance</ActiveLink>
             </li>
             <li className="settingTo">profile</li>
             <li className="settingTo">issues</li>

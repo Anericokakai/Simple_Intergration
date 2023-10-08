@@ -222,6 +222,8 @@ button:focus-visible {
 
 .active{
   text-decoration: none;
+  color: var(--hover-btn);
+
 }
 .active button{
   color: var(--hover-btn);
@@ -229,6 +231,7 @@ button:focus-visible {
 }
 .notActive{
   text-decoration: none;
+  color: var(--text-color);
 }
 
 
@@ -906,7 +909,16 @@ display: none;
 
 
 
-
+.nestedHeader{
+ 
+height: 100px;
+  overflow-x: auto;
+  min-width: 400px;
+  white-space: nowrap;
+}
+.nestedHeader a{
+  display: inline-block;
+}
 
 .documentContainer{
   display: grid;
@@ -1052,8 +1064,11 @@ border-radius: 10px;
   background-color: #0d111758;
   height: 100%;
   z-index: 10;
+ 
   
-  
+}
+html::-webkit-scrollbar{
+  display: none;
 }
 
 .hideSettingNav{
@@ -1132,6 +1147,7 @@ background-color: var(--rest-of-page-color-bg);
   padding: 2em 0;
   justify-content: center;
   gap: 2em;
+  flex-wrap: wrap;
 }
 .headings{
   font-size: 22px;
