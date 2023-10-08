@@ -33,7 +33,7 @@ export const sendEmailsHelpers=async(req,res)=>{
           expiresIn: "1h",
         });
   
-        const link = `http://localhost:6060/reset-pass?id=${user_exist._id}&token=${token}`;
+        const link = `https://free-apis-pwdv.onrender.com/reset-pass?id=${user_exist._id}&token=${token}`;
   
 
   

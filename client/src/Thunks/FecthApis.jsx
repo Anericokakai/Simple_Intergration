@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchAvailableApis=createAsyncThunk("fetchAvailableApis",async()=>{
-const result=await axios.get("http://localhost:6060/simpleIntegration/api/v1/apis")
+const result=await axios.get("https://free-apis-pwdv.onrender.com/simpleIntegration/api/v1/apis")
 return result.data
 
 })
