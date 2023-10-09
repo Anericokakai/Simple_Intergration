@@ -6,6 +6,7 @@ import user_routes from "./Routes/All_routes";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAvailableApis, fetchDocumentation } from "./Thunks/FecthApis";
 import { setDecodedDocs } from "./slice/DocumentationSlice";
+import 'react-toastify/dist/ReactToastify.css'
 function App() {
  
 

@@ -2,11 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { resetPassword } from "../helpers/LoginsHelper";
-
+import {toast,ToastContainer} from "react-toastify"
+import { useNavigate } from "react-router-dom";
 
 
 function ResetPass() {
 
+  const navigate = useNavigate()
     const[error,setError]=useState()
 
     const handleNewPass = (e) => {
@@ -27,6 +29,14 @@ return setError("invalid email  format!")
             email:email
         }).then(data=>{
             console.log(data.data)
+   
+   
+       if(data.data.message && data.data.success){
+        toast.success(data.data.message)  
+setTimeout(()=>{
+navigate("/con_access",{replace:true})
+},2500)
+            }
         }).catch(error=>{
             console.log(error);
             if(error.response.status===401){
@@ -37,6 +47,14 @@ return setError("invalid email  format!")
       const { theme } = useSelector((store) => store.userLogInDetails);
   return (
     <section className="BodyLogin" data-theme={theme}>
+      <ToastContainer
+        position={"top-center"}
+        closeOnClick={false}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        autoClose={2000}
+      />
       <div className="changePass">
         <form className="formBackend" onSubmit={handleNewPass}>
           <h1>Reset your password</h1>

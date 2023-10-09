@@ -290,7 +290,7 @@ function CreateAccount() {
             <p className="blueText prompts">Have an account ?</p>
           </Link>
 
-          <div className="tipsDesc">
+          <div className="tipsDesc promptDec">
             <span className="blueText prompts">Tip: </span> You are about to
             sign up to simpleIntegration. After you've have logged in, you'll
             only be asked to re-authenticate again after a few hours of

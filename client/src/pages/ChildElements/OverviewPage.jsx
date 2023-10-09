@@ -3,21 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getReadmeFile } from "../../helpers/LoginsHelper";
 import "../../index.css";
+import avator  from '../../assets/avator3.svg'
 import { setDecodedDocs } from "../../slice/DocumentationSlice";
 import { fetchAvailableApis, fetchDocumentation } from "../../Thunks/FecthApis";
 function OverviewPage() {
   const { user_information, LogInStatus, token } = useSelector(
     (store) => store.userLogInDetails
   );
-
   const {page}= useParams()
   const { apis, loading, apiError } = useSelector((store) => store.ApisSlice);
-  console.log(apis)
-
-
-
-
-
 
   const dispatch=useDispatch()
 
@@ -29,9 +23,7 @@ function OverviewPage() {
       dispatch(fetchAvailableApis())
   
    
-    
-
-
+  
   },[])
   
   
@@ -42,11 +34,17 @@ function OverviewPage() {
         <div className="UserInfo">
           <div className="detailed_info">
             <div className="userImage">
-              <img
-                src={user_information?.avatar_url}
-                className="userImage"
-                alt="Upload an avatar"
-              />
+        {
+           user_information?.avatar_url ?<img
+           src={ user_information?.avatar_url}
+           className="userImage"
+           alt="Upload an avatar"
+         />:<img
+         src={ avator}
+         className="userImage"
+         alt="Upload an avatar"
+       />
+        }      
             </div>
             <div className="MoreBoutUser">
               <h1 className="user_name">{user_information?.name}</h1>

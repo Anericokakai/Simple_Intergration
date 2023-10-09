@@ -405,7 +405,7 @@ overflow-y: hidden;
 @media screen and (max-width:771px) {
   
   .OverView_grid_Container{
-    grid-template-columns: 1fr;
+  display: block;
   }
   .detailed_info{
     display: flex;
@@ -478,8 +478,14 @@ overflow-y: hidden;
     width: 60px;
     height: 60px;
   }
+  .userImage img{
+    width: 100%;
+  }
   .user_name,.fadeText{
     font-size: 19px;
+  }
+  .MoreBoutUser h2{
+    font-size: 14px;
   }
   .OverViewPage{
     padding: 1em ;
@@ -525,7 +531,7 @@ overflow-y: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--rest-of-page-color-bg);
   width: 100%;
 }
@@ -863,6 +869,23 @@ display: none;
     padding-left:10px ;
     padding-right: 10px;
   }
+  .introToApiKey{
+    align-items: center;
+    padding: .7em;
+  }
+  .introToApiKey h1{
+    font-size: 17px;
+  }
+  .genNewBtn{
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ApiDesc p{
+    font-size: 17px;
+
+  }
 
 
 }
@@ -948,6 +971,12 @@ pre {
   }
   .markdown-body h2{
     font-size: 19px;
+  }
+  .prompts{
+    font-size: 15px;
+  }
+  .promptDec{
+    font-size: 14px;
   }
 
   
