@@ -19,7 +19,6 @@ const user_routes = [
         path: "/home/overview",
         element: (
           <RequireAuth>
-            {" "}
             <OverviewPage />
           </RequireAuth>
         ),
